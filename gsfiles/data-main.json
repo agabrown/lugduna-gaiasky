@@ -1,0 +1,37 @@
+{ 
+	"version" : 21,
+	"data" : [
+		{
+			"loader": "gaiasky.data.JsonLoader",
+			"files": [  
+				"data/sun.json",
+				"data/planets.json",
+				"data/moons.json",
+				"data/satellites.json",
+
+				"data/orbits-planet.json",
+				"data/orbits-moon.json",
+				"data/orbits-satellite.json",
+
+				"data/extra.json",
+
+				"data/locations.json",
+				"data/locations-earth.json",
+				"data/locations-moon.json",
+
+				"data/orbit-lugduna.json"
+			]
+		},
+		{
+			"loader": "gaiasky.data.GeoJsonLoader",
+			"files": [ "data/countries/countries.geo.json" ]
+		},
+		{
+			"loader": "gaiasky.data.constel.ConstellationsLoader",
+			"files": [ "data/constellations/constel_hip.csv" ]
+		},
+		{
+			"loader": "gaiasky.data.constel.ConstelBoundariesLoader",
+			"files": [ "data/constellations/boundaries.csv" ]
+		}
+	]}

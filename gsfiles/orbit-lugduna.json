@@ -1,0 +1,16 @@
+{"objects" : [
+	{
+		"name" : "Asteroids hook",
+		"position" : [0.0, 0.0, 0.0],
+	
+		"ct" : ["Asteroids"],
+	
+		// Fade distances, in parsecs
+		"fadeout" : [1e-5, 2e-4],
+		
+	
+		"parent" : "Universe", 
+		"impl" : "gaiasky.scenegraph.FadeNode"
+	},
+{"name": "lugduna", "color": [0.1, 1.0, 0.1, 1.0], "parent": "Asteroids hook", "impl": "gaiasky.scenegraph.Orbit", "provider": "gaiasky.data.orbit.OrbitalParametersProvider", "ct": ["Asteroids", "Orbits"], "transformFunction": "eclipticToEquatorial", "orbit": {"epoch": 2458200.5, "meananomaly": 128.239102, "semimajoraxis": 326960986.38137996, "eccentricity": 0.18789086, "argofpericenter": 306.705016, "ascendingnode": 58.229874, "period": 1180.172378241631, "inclination": 5.376525}, "newmethod": true, "pointsize": 25.0, "pointcolor": [1.0, 1.0, 0.2, 1.0]}
+]}

@@ -1,3 +1,9 @@
+frames/*.png
+frames/*.jpg
+video/*.mp4
+test-text.sh
+synctowad.sh
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

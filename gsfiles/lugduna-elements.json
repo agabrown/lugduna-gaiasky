@@ -1,0 +1,3 @@
+{"objects" : [
+{"name": "lugduna", "color": [0.4, 1.0, 0.4, 0.5], "parent": "Asteroids hook", "impl": "gaiasky.scenegraph.Orbit", "provider": "gaiasky.data.orbit.OrbitalParametersProvider", "ct": ["Others"], "transformFunction": "eclipticToEquatorial", "orbit": {"epoch": 2458200.5, "meananomaly": 128.239102, "semimajoraxis": 326960986.38137996, "eccentricity": 0.18789086, "argofpericenter": 306.705016, "ascendingnode": 58.229874, "period": 1180.172378241631, "inclination": 5.376525}, "onlybody": true, "newmethod": true}
+]}
