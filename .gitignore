@@ -1,8 +1,9 @@
-frames/*.png
-frames/*.jpg
+frames/gs_*.png
+frames/gs_*.jpg
 video/*.mp4
 test-text.sh
 synctowad.sh
+.*swp
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
