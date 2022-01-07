@@ -1,0 +1,11 @@
+We follow the asteroid 1133 Lugduna, named after Leiden, in its orbit
+around the sun during the ‘Leiden European City of Science’ year 2022.
+
+The animation starts with a view of the solar system up to the orbits
+of Jupiter and Saturn. We then zoom in on the inner solar system where
+we find Lugduna on its orbit around the sun. We follow the orbital
+motion of Lugduna and the planets during the year 2022. You can see
+how the earth ‘overtakes’ Lugduna over the course of a year.
+
+Orbital elements of Lugduna:
+Period 3.2 year, semimajor axis 2.2 au, eccentricity 0.2, inclination 5.4°

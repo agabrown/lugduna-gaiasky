@@ -198,8 +198,8 @@ def make_animation(args):
     gs.setClosestCrosshairVisibility(False)
 
     # ------------ Configure animation frame output ------------ #
-    #gs.configureFrameOutput(1920, 1080, 30, "/home/brown/Gaia/Outreach/1133Lugduna/frames/", "gs")
-    gs.configureFrameOutput(1280, 720, 60, "/home/brown/Gaia/Outreach/1133Lugduna/frames/", "gs")
+    #gs.configureFrameOutput(1920, 1080, 30, "./frames/", "gs")
+    gs.configureFrameOutput(1280, 720, 60, "./frames/", "gs")
     gs.setFrameOutputMode("simple")
     gs.resetImageSequenceNumber()
 
@@ -209,7 +209,7 @@ def make_animation(args):
     # ------------ Configure animation time (start on 2022-01-01) ------------ #
     gs.stopSimulationTime()
     gs.setSimulationTime(2022, 1, 1, 12, 0, 0, 0)
-    gs.setTargetTime(2023, 1, 1, 12, 0, 0, 0)
+    gs.setTargetTime(2022, 12, 31, 12, 0, 0, 0)
 
     # ------------ Configure the camera starting state ------------ #
     # Camera positions and orientation vectors are given in Cartesian Ecliptic coordinates and then transformed to ICRS.
@@ -304,7 +304,7 @@ def make_animation(args):
 
     do_camera_transition(campos, camdir, camup, 5.0, gs)
 
-    gs.sleep(stdwaitshort)
+    gs.sleep(3.0)
     gs.setComponentTypeVisibility("element.labels", False)
     gs.cameraStop()
 
