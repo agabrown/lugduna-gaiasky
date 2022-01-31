@@ -35,6 +35,6 @@
         "pointsize": 25.0,
         "pointcolor": [1.0, 1.0, 0.2, 1.0],
         "labelcolor" : [1.0, 1.0, 1.0, 1.0],
-        "forcelabel": true
+        "forcelabel": false
     }
 ]}
