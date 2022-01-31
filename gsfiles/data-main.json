@@ -1,5 +1,14 @@
 { 
-	"version" : 21,
+	"version" : 24,
+	"name" : "Base data pack",
+	"key" : "default-data",
+	"type" : "data-pack",
+	"mingsversion" : 30200,
+	"check" : "data-main.json",
+	"size" : 105539334,
+	"description" : "Required data pack.\nFor Gaia Sky 3.2.0 and above. Contains the solar system planets and moons, asteroids, minor planets, satellites, orbits, constellations, the Milky Way, grids, locations and other important objects. Without this data pack Gaia Sky won't start.",
+	"releasenotes": "- Upgrade to new descriptor format introduced in 3.2.0.\n- Oort cloud taken to own external dataset.\n- NBG hook moved to own dataset.",
+	"link" : "@mirror-url@basedata",
 	"data" : [
 		{
 			"loader": "gaiasky.data.JsonLoader",

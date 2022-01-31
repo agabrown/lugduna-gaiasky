@@ -251,6 +251,7 @@ def make_animation(args):
 
     # Show Lugduna
     gs.sleep(stdwaitshort)
+    gs.setForceDisplayLabel("Ludguna", True)
     gs.setComponentTypeVisibility("element.asteroids", True)
     gs.sleep(stdwait)
 
