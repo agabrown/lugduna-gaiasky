@@ -1,7 +1,7 @@
 # Gaia Sky configuration file
 
 # Configuration version number
-configVersion: 30200
+configVersion: 30301
 
 #
 # Data configuration
@@ -11,14 +11,13 @@ data:
   # Windows and macOS: in your user directory: $HOME/.gaiasky/data
   # Linux: ~/.local/share/gaiasky/data
   location: null
-  # Data files to load at startup, using the relative form from the data location (i.e. starting with 'data/')
-  # 'data/data-main.json' should always be there
-  # Additionally to the files defined here, any file in the data folder with the format
-  # "autoload-*.json" will also be loaded using the JsonLoader
+  # Data files to load at startup, using the relative form from the data location (placeholder is '$data/').
+  # They should use the format '$/data/[dataset-name]/dataset.json.
+  # The base data pack '$data/default-data/dataset.json' should always be there.
   dataFiles:
-    - data/data-main.json
-  # Location of the skybox within the data folder (data/tex/skybox/[...]/)
-  skyboxLocation: data/tex/skybox/gaiasky/
+    - $data/default-data/dataset.json
+  # Location of the skybox used for cubemap reflections within the data folder (data/tex/skybox/[...]/)
+  reflectionSkyboxLocation: $data/default-data/tex/skybox/gaiasky/
   # Use all terms in position algorithms (VSOP87 and moon coordinates)
   highAccuracy: false
   # Use real attitude or NSL for Gaia
@@ -42,7 +41,7 @@ graphics:
   # Graphics quality setting in [LOW|NORMAL|HIGH|ULTRA]
   quality: NORMAL
   # Resolution in windowed mode, use 0 for default
-  resolution: [0, 0]
+  resolution: [ 0, 0 ]
   # Make the window resizable, in windowed mode
   resizable: true
   # Full screen configuration
@@ -50,7 +49,7 @@ graphics:
     # Is fullscreen active?
     active: false
     # Resolution in full screen mode
-    resolution: [1920, 1080]
+    resolution: [ 1920, 1080 ]
   # Enable VSYNC
   vsync: true
   # Limit frame rate, set to 0 to disable frame limiter
@@ -63,6 +62,10 @@ graphics:
   dynamicResolution: false
   # This activates output to the default monitor. Deactivate only to enable headless mode.
   screenOutput: true
+  # Use the sRGB color space as a frame buffer format. Only supported by OpenGL 3.2 and above.
+  # If this is activated, the internal format {@link GL30#GL_SRGB8_ALPHA8} is used only
+  # when safe graphics mode is not active.
+  useSRGB: false
 
 #
 # Scene configuration
@@ -71,7 +74,7 @@ scene:
   # Name of the home object
   homeObject: Earth
   # Object fade time in ms
-  fadeMs: 2500
+  fadeMs: 1500
   # Camera configuration
   camera:
     # Camera speed limit
@@ -95,33 +98,36 @@ scene:
     # 17 - 1000 pc/s
     # 18 - No limit
     speedLimitIndex: 18
-    # Camera speed multiplier
+    # Camera speed multiplier.
     speed: 10.0
-    # Camera turn velocity
+    # Camera turn velocity.
     turn: 3000.0
-    # Camera rotation
+    # Camera rotation.
     rotate: 5000.0
-    # Field of view in degrees
+    # Field of view in degrees.
     fov: 45.0
     # Cinematic camera
     cinematic: false
     # Target on in free mode. This scales the velocity of the camera according
-    # to the distance to the closest object
+    # to the distance to the closest object.
     targetMode: true
-    # Focus lock configuration, when camera is in focus mode
+    # Focus lock configuration, when camera is in focus mode.
     focusLock:
-      # Lock camera position to focus position
+      # Lock camera position to focus position.
       position: true
-      # Lock camera position to focus orientation
+      # Lock camera position to focus orientation.
       orientation: false
-  # Star settings
+  # Star settings.
   star:
-    # Star brightness factor
+    # Star brightness factor.
     brightness: 2.0
-    # Modulate the brightness of stars with this power
+    # Modulate the brightness of stars with this power.
     power: 0.75
-    # Size scaling of stars
+    # Size scaling of stars.
     pointSize: 8.2
+    # Control the glow amount when close to stars.
+    # Should be set rather low, i.e., in [0.01, 0.5].
+    glowFactor: 0.06
     # Texture index, see $GS_DATA/tex/base/star-tex-xx-low.png
     # 1 - horizontal spike
     # 2 - god rays
@@ -129,7 +135,7 @@ scene:
     # 4 - simple radial profile
     textureIndex: 4
     # Star opacity mapping, as in [min, max]
-    opacity: [0.0, 1.0]
+    opacity: [ 0.0, 1.0 ]
     # Star groups
     group:
       # Enable or disable the star billboards when stars are close
@@ -181,10 +187,10 @@ scene:
     # be balanced with the dataset and the draw distance.
     # 6.0 M is calibrated to use 6 GB heap space with the default dataset
     maxStars: 7000000
-    # The octant thersholds:
+    # The octant thresholds:
     # - radius/distance above which we start painting stars in octant with fade in. Angle in radians.
     # - radius/distance below which we paint stars in octant with fade out. Above this angle, inner stars are painted with full brightness. Angle in radians.
-    threshold: [1.4, 1.8]
+    threshold: [ 1.4, 1.8 ]
     # If on, particles fade in and out between levels of detail
     fade: true
   # Renderer settings
@@ -226,7 +232,7 @@ scene:
     home: false
   # Initialization configuration
   initialization:
-    # Lazy initalization of textures
+    # Lazy initialization of textures
     lazyTexture: true
     # Lazy initialization of meshes
     lazyMesh: true
@@ -249,6 +255,7 @@ scene:
     Labels: true
     Orbits: true
     Locations: false
+    CosmicLocations: true
     Countries: false
     Constellations: false
     Boundaries: false
@@ -265,13 +272,15 @@ scene:
 # Program configuration
 #
 program:
+  # The default time zone to use. One of [UTC|SYSTEM_DEFAULT]
+  timeZone: UTC
   # Enable safe mode, which disables advanced graphics features.
   # For instance, it disables float buffers and creates no velocity buffer (no motion blur)
   safeMode: false
   # Print debug information to the terminal
   debugInfo: false
-  # Whether to display the HUD
-  hud: false
+  # Offline mode: never attempt any connection - disables updates and dataset downloads
+  offlineMode: false
   # Save all procedurally-generated textures to the data folder
   # WARN: watch your disk space!
   saveProceduralTextures: false
@@ -293,12 +302,12 @@ program:
   pointer:
     # Display the coordinates of the pointer projected on the sides of the window
     coordinates: true
-    # Pointer guides configuraiton
+    # Pointer guides configuration
     guides:
       # Display pointer guides
       active: false
       # Color of pointer guides in RGBA
-      color: [1.0, 1.0, 1.0, 0.3]
+      color: [ 1.0, 1.0, 1.0, 0.3 ]
       # Width of pointer guide lines
       width: 1.5
   # Recursive grid configuration
@@ -317,7 +326,7 @@ program:
   modeCubemap:
     # Start in cubemap mode
     active: false
-    # Projection to use for the cubemap mode, in [EQUIRECTANGULAR|CYLINDRICAL|HAMMER|FISHEYE]
+    # Projection to use for the cubemap mode, in [EQUIRECTANGULAR|CYLINDRICAL|HAMMER|AZIMUTHAL_EQUIDISTANT]
     # Set to 'fisheye' for planetarium mode
     projection: EQUIRECTANGULAR
     # The resolution at which to render each side of the cubemap
@@ -332,7 +341,7 @@ program:
   net:
     # Enable the REST API on this TCP port (negative to disable)
     restPort: -1
-    # Master configuraiton
+    # Master configuration
     master:
       # Is master instance
       # This means that the status is sent over the network to the slaves
@@ -340,7 +349,7 @@ program:
       active: false
       # List of URLs of the slave instances
       # Example: [http://localhost:13900/api/, http://localhost:13901/api]
-      slaves: []
+      slaves: [ ]
     # Slave configuration
     slave:
       # In a client-server configuration, this makes this instance act as a slave
@@ -362,7 +371,7 @@ program:
       roll: 0.0
   # Default location of script files, leave empty for default
   scriptsLocation: null
-  # User interface configuraiton
+  # User interface configuration
   ui:
     # The UI theme, in [dark-green|dark-blue|dark-orange|night-red]
     theme: dark-green
@@ -370,6 +379,8 @@ program:
     scale: 1.0
     # Preferred distance units [PC|LY]
     distanceUnits: PC
+    # Show mode change pop-up dialogs (panorama, planetarium, stereoscopic, and game modes)
+    modeChangeInfo: true
   # Ask for confirmation on exit
   exitConfirmation: true
   # Set to 'default' to use the system default locale, set to
@@ -386,11 +397,12 @@ program:
   # Pointers to some resources
   url:
     # URL to check for new versions
-    versionCheck: https://gitlab.com/api/v4/projects/langurmonkey%2Fgaiasky/repository/tags
+    versionCheck: https://codeberg.org/api/v1/repos/gaiasky/gaiasky/tags
     # Data repository location
     dataMirror: https://gaia.ari.uni-heidelberg.de/gaiasky/files/repository/
     # Data descriptor file location
-    dataDescriptor: https://gaia.ari.uni-heidelberg.de/gaiasky/files/repository/gaiasky-data-030000.json
+    # This can also point to a local repository description file (use file://)
+    dataDescriptor: https://gaia.ari.uni-heidelberg.de/gaiasky/files/repository/gaiasky-data-030301.json.gz
 
 #
 # Controls configuration
@@ -408,7 +420,7 @@ controls:
     # processed by Gaia Sky. Find the connected controller names in the Preferences
     # window, Controls tab.
     # Example: blacklist: [Microsoft Xbox 360 pad, Playstation 4 dualshock]
-    blacklist: []
+    blacklist: [ ]
 
 #
 # Frame output configuration
@@ -425,7 +437,7 @@ frame:
   # redraw - the image is redrawn with optionally different effects and resolution, and then it is written to a file.
   mode: SIMPLE
   # Still frame image resolution, only in redraw mode
-  resolution: [1280,720]
+  resolution: [ 1280,720 ]
   # File name prefix for still frames
   prefix: gaiasky
   # Stamp frames with current simulation time
@@ -448,7 +460,7 @@ screenshot:
   # redraw - the image is redrawn with optionally different effects and resolution, and then it is written to a file.
   mode: SIMPLE
   # Screenshot image resolution, only in redraw mode
-  resolution: [1280,720]
+  resolution: [ 1280,720 ]
 
 #
 # Camrecorder configuration
@@ -456,7 +468,7 @@ screenshot:
 camrecorder:
   # Target frame rate of the camrecorder system
   targetFps: 60
-  # Keyframe configruation
+  # Keyframe configuration
   keyframe:
     # Interpolation method for the camera position, in [SPLINE|LINEAR]
     position: SPLINE
@@ -475,19 +487,46 @@ postprocess:
   bloom:
     # Intensity of bloom
     intensity: 0.0
+    # Frame buffer scale
+    fboScale: 0.5
   # Unsharp mask effect
   unsharpMask:
     # Sharpen factor, in [0,3]
     factor: 0.0
-  # Activate/deactivate motion blur effect
-  motionBlur: false
-  # Activate/deactivate lens flare effect
-  lensFlare: true
-  # Activate/deactivate light glow effect
-  lightGlow: true
-  # Activate/deactivate fisheye transformation
-  fisheye: false
-  # Image levels configuraiton
+  # Motion blur effect
+  motionBlur:
+    active: false
+  # Screen space reflections
+  ssr:
+    active: false
+  # Lens flare effect settings
+  lensFlare:
+    active: true
+    intensity: 0.15
+    numGhosts: 8
+    haloWidth: 0.5
+    blurPasses: 35
+    flareSaturation: 0.8
+    bias: -0.98
+    texLensColor: $data/default-data/tex/base/lenscolor.png
+    texLensDirt: $data/default-data/tex/base/lensdirt%#QUAL#%.jpg
+    texLensStarburst: $data/default-data/tex/base/lensstarburst.jpg
+    fboScale: 0.2
+  # Light glow effect
+  lightGlow:
+    active: true
+    samples: 10
+  # Re-projection as post-processing.
+  # Modes are:
+  # DISABLED
+  # DEFAULT, ACCURATE
+  # STEREOGRAPHIC_SCREEN, STEREOGRAPHIC_LONG, STEREOGRAPHIC_SHORT, STEREOGRAPHIC_180
+  # LAMBERT_SCREEN, LAMBERT_LONG, LAMBERT_SHORT, LAMBERT_180
+  # ORTHOGRAPHIC_SCREEN, ORTHOGRAPHIC_LONG, ORTHOGRAPHIC_SHORT, ORTHOGRAPHIC_180
+  reprojection:
+    active: false
+    mode: DISABLED
+  # Image levels
   levels:
     # Brightness level in [-1,1] (default=0)
     brightness: 0.0
@@ -499,12 +538,13 @@ postprocess:
     saturation: 1.0
     # Gamma correction value in [0,3] (default=1)
     gamma: 1.0
-  # Tone mapping algorhtims
+  # Tone mapping algorithms
   toneMapping:
-    # Alrogrithm to use, one of [AUTO|EXPOSURE|ACES|UNCHARTED|FILMIC|NONE]
+    # Algorithm to use, one of [AUTO|EXPOSURE|ACES|UNCHARTED|FILMIC|NONE]
     type: NONE
     # When type=exposure, set the exposure here, in [0,n]
     exposure: 0.0
+
 #
 # Spacecraft configuration
 #
@@ -513,3 +553,34 @@ spacecraft:
   velocityDirection: false
   # Whether to show the direction and up axes of the spacecraft
   showAxes: false
+
+#
+# Proxy configuration
+#
+
+#proxy:
+#   useSystemProxies: true
+#   http:
+#     port: 8080
+#     host: 127.0.0.1
+#     username: myself
+#     password: secret
+#     nonProxyHosts: localhost,192.168.0.*
+#   https:
+#     port: 8080
+#     host: 127.0.0.1
+#     username: myself
+#     password: secret
+#     nonProxyHosts: localhost,192.168.0.*
+#   ftp:
+#     port: 8080
+#     host: 127.0.0.1
+#     username: myself
+#     password: secret
+#     nonProxyHosts: localhost,192.168.0.*
+#   socks:
+#     port: 8080
+#     host: 127.0.0.1
+#     username: myself
+#     password: secret
+#     version: 5

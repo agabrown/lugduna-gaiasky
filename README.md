@@ -17,8 +17,8 @@ Science 2022 events.
 * To use PNG output frames edit `~/.xdg/gaiasky/config.yaml` and change the "JPG" occurences to "PNG"
     * This step is only needed after the first time running GaiaSky
 * Copy the file `orbit-lugduna.json` from the `gsfiles` folder to `~/.local/share/gaiasky/data/default-data/`
-* Copy the file `dataset.json` from the `gsfiles` folder to `~/.local/share/gaiasky/data/default-data/`, replacing the
-  existing `dataset.json`
+* Copy the file `dataset.json` from the `gsfiles` folder to `~/.local/share/gaiasky/data/default-data/`, replacing the existing `dataset.json`
+* Edit `~/gaiasky/conf/config.yaml` and change "pointCloud: POINTS" to "pointCloud: TRIANGLES" (assuming your hardware can handle this).
 
 ### Create the video
 * Start GaiaSky and while GaiaSky is running execute the following instruction from the command line:
@@ -30,6 +30,10 @@ python lugduna.py -s
 ./makevideo.sh [-e] [-n]
 ```
 * The output videos can be found in the `video` folder.
+
+If you modify anything you can see what the animation sequence looks like by running `python lugduna.py` without the
+`-s` switch. This will be faster (no frames are stored from GaiaSky) but the explanations and Lugduna and date labels
+will be missing (these are added with the `makevideo.sh` script).
 
 ## Dependencies
 * [py4j](https://www.py4j.org/)
