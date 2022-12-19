@@ -1,6 +1,6 @@
 # lugduna-gaiasky
-Visualize the orbit of the asteroid 1133 Lugduna with GaiaSky. This video was made in connection with the Leiden City of
-Science 2022 events.
+Visualize the orbit of the asteroid 1133 Lugduna with GaiaSky. This video was made in connection with the [Leiden City of
+Science 2022](https://leiden2022.nl/) events.
 
 ![animation still](./frames/still.png)
 
