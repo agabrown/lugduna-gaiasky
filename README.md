@@ -39,5 +39,7 @@ If you modify anything you can see what the animation sequence looks like by run
 will be missing (these are added with the `makevideo.sh` script).
 
 ## Dependencies
+* [NumPy](https://numpy.org/)
 * [py4j](https://www.py4j.org/)
 * [pygaia](https://pypi.org/project/PyGaia/)
+* [FFmpeg](https://ffmpeg.org/)
