@@ -67,7 +67,7 @@ then
         fade=type=out:duration=1:start_time=19,format=yuv420p[v0]; \
         [1:v]drawtext=fontfile=${FONTFILE}: \
         text=Lugduna:fontcolor_expr=19ff19:fontsize=24:box=0: \
-        x=(w-text_w)/2:y=(h-text_h)/2+120:enable='between(t,7,12)', \
+        x=(w-text_w)/2-120:y=(h-text_h)/2+40:enable='between(t,7,12)', \
         drawtext=fontfile=${FONTFILE}: \
         text=${STARTDATE}:fontcolor_expr=ffffff:fontsize=32:box=0: \
         x=(w-text_w)/2:y=(h-text_h)/2+250:enable='between(t,28,31)',format=yuv420p[v1]; \
@@ -83,7 +83,7 @@ else
         -filter_complex \
         "[0:v]drawtext=fontfile=${FONTFILE}: \
         text=Lugduna:fontcolor_expr=19ff19:fontsize=24:box=0: \
-        x=(w-text_w)/2:y=(h-text_h)/2+120:enable='between(t,7,12)', \
+        x=(w-text_w)/2-120:y=(h-text_h)/2+40:enable='between(t,7,12)', \
         drawtext=fontfile=${FONTFILE}: \
         text=${STARTDATE}:fontcolor_expr=ffffff:fontsize=32:box=0: \
         x=(w-text_w)/2:y=(h-text_h)/2+250:enable='between(t,28,31)',format=yuv420p[v0]; \

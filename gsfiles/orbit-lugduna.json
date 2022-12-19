@@ -23,8 +23,7 @@
         "orbit": {
             "epoch": 2458200.5,
             "meananomaly": 128.239102,
-            "semimajoraxis":
-            326960986.38137996,
+            "semimajoraxis": 326960986.38137996,
             "eccentricity": 0.18789086,
             "argofpericenter": 306.705016,
             "ascendingnode": 58.229874,

@@ -22,6 +22,10 @@ from pygaia.astrometry.constants import au_in_meter
 from pygaia.astrometry.coordinates import Transformations, CoordinateTransformation
 import numpy as np
 import argparse
+import os
+
+_ROOT = os.path.abspath(os.path.dirname(__file__))
+_FRAMES_PATH = os.path.join(_ROOT,"frames")
 
 au_in_km = au_in_meter/1.0e3
 
@@ -199,7 +203,7 @@ def make_animation(args):
 
     # ------------ Configure animation frame output ------------ #
     #gs.configureFrameOutput(1920, 1080, 30, "./frames/", "gs")
-    gs.configureFrameOutput(1280, 720, 60, "./frames/", "gs")
+    gs.configureFrameOutput(1280, 720, 60, _FRAMES_PATH, "gs")
     gs.setFrameOutputMode("simple")
     gs.resetImageSequenceNumber()
 

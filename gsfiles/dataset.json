@@ -1,0 +1,45 @@
+{ 
+	"key" : "default-data",
+	"name" : "Base data pack",
+	"type" : "data-pack",
+	"version" : 37,
+	"mingsversion" : 30301,
+	"size" : 112522173,
+	"nobjects" : 2573,
+	"description" : "Required data pack.\nFor Gaia Sky 3.3.1 and above. Contains the solar system planets and moons, minor planets, satellites, orbits, constellations, the Milky Way, grids, locations and other important objects. Without this data pack Gaia Sky won't start.",
+	"releasenotes": "- Move to new data format in Gaia Sky 3.3.1.",
+	"link" : "@mirror-url@basedata",
+  "check": "$data/default-data/dataset.json",
+  "files": [ "$data/default-data" ],
+	"data" : [
+		{
+			"loader": "gaiasky.data.JsonLoader",
+			"files": [  
+				"$data/default-data/sun.json",
+				"$data/default-data/planets.json",
+				"$data/default-data/moons.json",
+				"$data/default-data/outer-moons.json",
+				"$data/default-data/satellites.json",
+				
+        "$data/default-data/orbits-planet.json",
+        "$data/default-data/orbits-moon.json",
+        "$data/default-data/orbits-satellite.json",
+        
+        "$data/default-data/universe.json",
+        "$data/default-data/extra.json",
+
+        "$data/default-data/locations.json",
+        "$data/default-data/locations-earth.json",
+        "$data/default-data/locations-moon.json",
+
+        "$data/default-data/constellations.json",
+        "$data/default-data/constellation-boundaries.json",
+
+        "$data/default-data/orbit-lugduna.json"
+			]
+		},
+		{
+			"loader": "gaiasky.data.GeoJsonLoader",
+			"files": [ "$data/default-data/countries/countries.geo.json" ]
+		}
+	]}
